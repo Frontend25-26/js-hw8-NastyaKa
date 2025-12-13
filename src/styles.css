@@ -2,6 +2,7 @@
     --ml: 0;
     --mb: 0;
 }
+
 body {
     display: flex;
     justify-content: center;
@@ -36,6 +37,12 @@ body {
     align-items: center;
 }
 
+.cell.canChoose {
+    outline: 4px solid darkred;
+    outline-offset: -4px;
+    cursor: pointer;
+}
+
 .cell.white {
     background: #f0d9b5;
 }
@@ -56,11 +63,54 @@ body {
     margin-bottom: var(--mb, 0);
 }
 
+.piece.move {
+    transition: transform 0.3s ease;
+    z-index: 300;
+}
+
 .piece.white {
     background: #fff;
 }
+
 .piece.black {
     background: #272727;
 }
 
+.die {
+    animation: dieAnimation ease-in-out;
+    z-index: 300;
+    aspect-ratio: 1;
+    width: 90%;
+    animation-iteration-count: 1;
+}
 
+@keyframes dieAnimation {
+    from {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.notification {
+    position: fixed;
+    justify-self: center;
+    align-self: center;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 30px;
+    padding: 30px;
+    border-radius: 5px;
+    z-index: 99999;
+    box-shadow: 0 5px 15px black;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.notification.show {
+    opacity: 1;
+}
